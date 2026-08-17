@@ -67,6 +67,13 @@ class TestNeptuneAnalyticsGraphStoreFactory:
 class TestNeptuneDatabaseGraphStoreFactory:
     """Tests for NeptuneDatabaseGraphStoreFactory."""
 
+    def test_factory_does_not_claim_explicit_sparql_endpoint(self):
+        factory = NeptuneDatabaseGraphStoreFactory()
+        assert factory.try_create(
+            'https://cluster.us-east-1.neptune.amazonaws.com:8182/sparql',
+            graph_store_type='sparql',
+        ) is None
+
     def test_try_create_with_neptune_db_prefix(self):
         """Verify factory creates store for neptune-db:// prefix."""
         factory = NeptuneDatabaseGraphStoreFactory()
