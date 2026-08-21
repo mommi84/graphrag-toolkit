@@ -56,9 +56,6 @@ networks:
     driver: bridge
 
 volumes:
-  # Pin explicit volume names so a Compose project rename does not orphan
-  # existing data. With an explicit name Compose uses it verbatim, so these
-  # always map to the same volumes regardless of the top-level project name.
   neo4j_local_data_dev:
     name: local-dev_neo4j_local_data_dev
   neo4j_local_logs_dev:
